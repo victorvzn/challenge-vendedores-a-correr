@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 
+import '@/components/shared/base/_globals.js'
+import '@/components/shared/icons/_globals.js'
+import '@/components/shared/images/_globals.js'
+
 Vue.config.productionTip = false
 
 Vue.use(i18n)
