@@ -14,7 +14,7 @@ import PageHome from '@/components/page-home/PageHome.vue'
 import sellers from '@/services/sellers'
 
 export default {
-  name: 'Home',
+  name: 'PageHome',
   components: {
     TheHeader,
     TheFooter,
