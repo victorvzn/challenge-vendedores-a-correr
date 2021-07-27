@@ -1,0 +1,1 @@
+export const MAXIMUM_SCORE_FOR_THE_WINNER = 20

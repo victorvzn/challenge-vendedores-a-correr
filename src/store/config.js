@@ -1,3 +1,7 @@
+import sellers from './sellers'
+import images from './images'
+import invoices from './invoices'
+
 const isDevelopment = (
   process.env.NODE_ENV !== 'production' &&
   process.env.NODE_ENV !== 'dev' &&
@@ -11,10 +15,15 @@ const state = {
   appVersion: process.env.PACKAGE_VERSION || '0'
 }
 
-const modules = {}
+const modules = {
+  sellers,
+  images,
+  invoices
+}
 
 export default {
   strict,
+  plugins: [],
   state,
   modules
 }

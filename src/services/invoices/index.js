@@ -11,20 +11,29 @@ const headers = () => {
 }
 
 export default {
-  fetchList () {
+  get (payload) {
     return request({
       baseURL,
       method: 'GET',
-      url: `${version}/sellers`,
+      url: `${version}/invoices/${payload.id}`,
       headers: headers()
     })
   },
-  update (payload) {
+  create (payload) {
     return request({
       baseURL,
-      method: 'PUT',
-      url: `${version}/sellers/${payload.id}`,
-      data: payload.data,
+      method: 'POST',
+      url: `${version}/invoices`,
+      data: payload,
+      headers: headers()
+    })
+  },
+  preview (payload) {
+    return request({
+      baseURL,
+      method: 'POST',
+      url: `${version}/invoices/preview`,
+      data: payload,
       headers: headers()
     })
   }

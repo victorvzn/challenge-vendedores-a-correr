@@ -1,31 +1,40 @@
-// import store from '@/store'
-// import config from '@/config'
+import store from '@/store'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/PageHome.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/ViewHome.vue')
   },
   {
-    path: '/vote',
+    path: '/vote/search',
     name: 'vote',
-    component: () => import(/* webpackChunkName: "vote" */ '@/views/PageVote.vue')
+    component: () => import(/* webpackChunkName: "vote-search" */ '@/views/ViewVoteSearch.vue'),
+    beforeEnter (to, from, next) {
+      store.dispatch('sellers/lookForWinner')
+        .then(thereIsAWinner => {
+          console.log(thereIsAWinner)
+          if (thereIsAWinner) {
+            return next({ name: 'home' })
+          }
+        })
+      return next()
+    }
   },
   {
-    path: '/result',
-    name: 'result',
-    component: () => import(/* webpackChunkName: "result" */ '@/views/PageResult.vue')
+    path: '/vote/result',
+    name: 'voteResult',
+    component: () => import(/* webpackChunkName: "vote-result" */ '@/views/ViewVoteResult.vue')
   },
   {
     path: '/winner',
     name: 'winner',
-    component: () => import(/* webpackChunkName: "winner" */ '@/views/PageWinner.vue')
+    component: () => import(/* webpackChunkName: "winner" */ '@/views/ViewWinner.vue')
   },
   {
     path: '/404',
     name: '404',
-    component: () => import(/* webpackChunkName: "not-found" */ '@/views/PageNotFound.vue')
+    component: () => import(/* webpackChunkName: "not-found" */ '@/views/ViewNotFound.vue')
   },
   {
     path: '*',

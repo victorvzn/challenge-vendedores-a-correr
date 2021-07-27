@@ -1,9 +1,16 @@
 <template>
-  <h1>Vendedores ¡a correr!</h1>
+  <h1 class="TheHeader__title text-center">Vendedores ¡a correr!</h1>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'TheHeader'
 }
 </script>
+
+<style lang="scss" scoped>
+  .TheHeader__title {
+    margin-top: 2.8125rem; // 45 / 16
+    margin-bottom: 3.125rem; // 50px / 16px
+  }
+</style>

@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'PageNotFound'
+  name: 'ViewNotFound'
 }
 </script>

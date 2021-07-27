@@ -1,14 +1,20 @@
-import { shallowMount } from '@vue/test-utils'
-import PageHome from '@/components/home/PageHome.vue'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import PageHome from '@/components/page-home/PageHome.vue'
+import VueRouter from 'vue-router'
+import BaseButton from '@/components/shared/base/BaseButton.vue'
+
+const localVue = createLocalVue()
+localVue.use(VueRouter)
 
 describe('PageHome.vue', () => {
   test('Should be render PageHome', () => {
-    const title = 'Vendedores ¡a correr!'
-    const button = '¡Vota por tu favorito aquí!'
+    // const titleText = 'Vendedores ¡a correr!'
+    const buttonText = '¡Vota por tu favorito aquí!'
 
-    const wrapper = shallowMount(PageHome)
+    const wrapper = shallowMount(PageHome, { localVue })
 
-    expect(wrapper.text()).toMatch(title)
-    expect(wrapper.text()).toMatch(button)
+    const Button = wrapper.findComponent(BaseButton)
+
+    expect(Button.text()).toMatch(buttonText)
   })
 })
